@@ -1,0 +1,26 @@
+
+syntax="proto3";
+
+package simple_msg;
+
+option go_package="simple_msg";
+
+// protoc --go_out=./ simple_msg.proto
+
+message HeadReq {
+    int32 cmd = 1; //
+    int32 subcmd = 2; //
+    int32 seq = 3; //
+    int32 version = 4; //
+    bytes ex = 5; // 扩展消息内容
+}
+
+message HeadRsp {
+    int32 cmd = 1; //
+    int32 subcmd = 2; //
+    int32 seq = 3; //
+    int32 version = 4; //
+    bytes ex = 5; // 扩展消息内容
+    int32 err_code = 6; //错误码(0~10000为系统错误),此错误表示系统错误,业务错误建议ex中另加字段表示
+    string err_msg = 7; //错误信息
+}
