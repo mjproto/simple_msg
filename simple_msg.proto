@@ -24,3 +24,11 @@ message HeadRsp {
     int32 err_code = 6; //错误码(0~10000为系统错误),此错误表示系统错误,业务错误建议ex中另加字段表示
     string err_msg = 7; //错误信息
 }
+
+
+// protoc --go_out=plugins=grpc:./ simple_msg.proto
+
+//
+service SimpleMsg {
+    rpc Head(stream HeadReq) returns(stream HeadRsp){}
+}
